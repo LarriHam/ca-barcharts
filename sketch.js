@@ -8,7 +8,7 @@ function preload(){
 
 function setup(){
 	background(50);
-	createCanvas(500,500);
+	createCanvas(1000,1000);
 	angleMode(DEGREES);
 	noLoop();
 
@@ -18,7 +18,7 @@ for(let i=0; i<numRows; i++){
 }
 
 
-let barChart01 = {
+let barChart = {
 data:cleanData,
 yValue: "VALUE",
 xValue: "Month",
@@ -38,28 +38,28 @@ title: "Road Fatalities 2023",
 barColour: "#30c9f0"
 }
 
-let barChart02 = {
+let horizontalBarChart = {
 	data:cleanData,
 	yValue: "VALUE",
 	xValue: "Month",
 	chartWidth: 400,
 	chartHeight: 300,
-	xPos: 50,
+	xPos: 550,
 	yPos: 400,
 	axisLineColour: "#0f0f0f",
 	barWidth: 20,
 	lableTextSize:20,
 	lablePadding: 10,
 	lableColour: ("#0f0f0f"),
-	lableRotation:45,
+	lableRotation:0,
 	numTicks: 6,
 	tickColour: ("#0f0f0f"),
 	title: "Road Fatalities 2023",
-	barColour: "#30c9f0"
+	barColour: "#9ef542"
 }
 
-barCharts.push(new BarChart(barChart01));
-barCharts.push(new BarChart(barChart02));
+barCharts.push(new BarChart(barChart));
+barCharts.push(new HorizontalBarChart(horizontalBarChart));
 
 
 }
