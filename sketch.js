@@ -58,8 +58,29 @@ let horizontalBarChart = {
 	barColour: "#9ef542"
 }
 
+let stackedBarChart = {
+	data:cleanData,
+	yValue: "VALUE",
+	xValue: "Month",
+	chartWidth: 400,
+	chartHeight: 300,
+	xPos: 50,
+	yPos: 800,
+	axisLineColour: "#0f0f0f",
+	barWidth: 20,
+	lableTextSize:20,
+	lablePadding: 10,
+	lableColour: ("#0f0f0f"),
+	lableRotation:45,
+	numTicks: 6,
+	tickColour: ("#0f0f0f"),
+	title: "Road Fatalities 2023",
+	barColour: "#eb4cfc"
+	}
+
 barCharts.push(new BarChart(barChart));
 barCharts.push(new HorizontalBarChart(horizontalBarChart));
+barCharts.push(new StackedBarChart(stackedBarChart));
 
 
 }
