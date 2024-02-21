@@ -1,30 +1,41 @@
 let barCharts = [];
-let data;
-let cleanData=[];
+let data1;
+let data2;
+let cleanData1=[];
+let cleanData2=[];	
+let numRows1;
+let numRows2;
 
 function preload(){
-	data = loadTable("data/road_fatalities_2023.csv", "csv", "header");
+	data1 = loadTable("data/road_fatalities_2023.csv", "csv", "header");
+	data2 = loadTable("data/full_driving_permit.csv", "csv", "header");
+
 }
 
 function setup(){
 	background(50);
-	createCanvas(1000,1000);
+	createCanvas(1050,1000);
 	angleMode(DEGREES);
 	noLoop();
 
-numRows =data.rows.length;
-for(let i=0; i<numRows; i++){
-	cleanData.push(data.rows[i].obj)
+numRows1 =data1.rows.length;
+for(let i=0; i<numRows1; i++){
+	cleanData1.push(data1.rows[i].obj)
+}
+
+numRows2 =data2.rows.length;
+for(let i=0; i<numRows2; i++){
+	cleanData2.push(data2.rows[i].obj)
 }
 
 
 let barChart = {
-data:cleanData,
+data:cleanData1,
 yValue: "VALUE",
 xValue: "Month",
 chartWidth: 400,
 chartHeight: 300,
-xPos: 50,
+xPos: 70,
 yPos: 400,
 axisLineColour: "#0f0f0f",
 barWidth: 20,
@@ -39,12 +50,12 @@ barColour: "#30c9f0"
 }
 
 let horizontalBarChart = {
-	data:cleanData,
+	data:cleanData1,
 	yValue: "VALUE",
 	xValue: "Month",
 	chartWidth: 400,
 	chartHeight: 300,
-	xPos: 550,
+	xPos: 570,
 	yPos: 400,
 	axisLineColour: "#0f0f0f",
 	barWidth: 20,
@@ -59,15 +70,16 @@ let horizontalBarChart = {
 }
 
 let stackedBarChart = {
-	data:cleanData,
-	yValue: "VALUE",
-	xValue: "Month",
+	data:cleanData2,
+	yValue: ["Male", "Female"],
+	xValue: "Age_Group",
+	yTotal: "Total",
 	chartWidth: 400,
 	chartHeight: 300,
-	xPos: 50,
+	xPos: 70,
 	yPos: 800,
 	axisLineColour: "#0f0f0f",
-	barWidth: 20,
+	barWidth: 40,
 	lableTextSize:20,
 	lablePadding: 10,
 	lableColour: ("#0f0f0f"),
@@ -75,7 +87,7 @@ let stackedBarChart = {
 	numTicks: 6,
 	tickColour: ("#0f0f0f"),
 	title: "Road Fatalities 2023",
-	barColour: "#eb4cfc"
+	barColour: ["#eb4cfc", "#2739d9"]
 	}
 
 barCharts.push(new BarChart(barChart));

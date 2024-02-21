@@ -4,6 +4,7 @@ class StackedBarChart {
 		this.data = obj.data;
 		this.yValue = obj.yValue;
 		this.xValue = obj.xValue;
+		this.yTotal = obj.yTotal;
 		this.chartWidth=obj.chartWidth;
 		this.chartHeight=obj.chartHeight;
 		this.xPos=obj.xPos;
@@ -35,18 +36,24 @@ class StackedBarChart {
 
 		let gap =(this.chartWidth-(this.data.length * this.barWidth))/(this.data.length)
 		let labels = this.data.map(d => d[this.xValue]);
-		let scale = this.chartHeight / max(this.data.map(d=>d[this.yValue]));
-		console.log(scale);
+		let scale = this.chartHeight / max(this.data.map(d=>d[this.yTotal]));
+
 
 		//this loop draws the horizontal elements bars and labels
 		push()
 		translate(gap,0);
 		for(let i=0; i<this.data.length; i++){
 			// draws the bars
-			fill (this.barColour);
-			noStroke();
-			rect (0,0,this.barWidth, -this.data[i][this.yValue] * scale)
-
+			let row = this.data[i];
+			push()
+			for(let j=0; j<this.yValue.length; j++){
+				fill (this.barColour[j % this.barColour.length]);
+				noStroke();
+				let scaleValue = this.chartHeight/row[this.yTotal[j]]
+				rect (0,0,this.barWidth, -row[this.yValue[j]] * scaleValue);
+				translate(0,-row[this.yValue[j]] * scale);
+			}
+			pop()
 			// lables
 			fill (this.lableColour)
 			noStroke();
@@ -68,7 +75,7 @@ class StackedBarChart {
 
 		//this draws the vertical elements
 		let tickGap = this.chartHeight/this.numTicks;
-		let tickValue = max(this.data.map(d=>d[this.yValue]))/this.numTicks;
+		let tickValue = max(this.data.map(d=>d[this.yTotal]))/this.numTicks;
 		for(let i=0; i<=this.numTicks; i++){
 			stroke(this.tickColour);
 			line(0,-i*tickGap,-15,-i*tickGap);
