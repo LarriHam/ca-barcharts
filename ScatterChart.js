@@ -1,10 +1,9 @@
 //this defines every object
-class StackedBarChart {
+class ScatterChart {
 	constructor(obj){
 		this.data = obj.data;
 		this.yValue = obj.yValue;
 		this.xValue = obj.xValue;
-		this.yTotal = obj.yTotal;
 		this.chartWidth=obj.chartWidth;
 		this.chartHeight=obj.chartHeight;
 		this.xPos=obj.xPos;
@@ -36,30 +35,26 @@ class StackedBarChart {
 
 		let gap =(this.chartWidth-(this.data.length * this.barWidth))/(this.data.length)
 		let labels = this.data.map(d => d[this.xValue]);
-		let scale = this.chartHeight / max(this.data.map(d=>d[this.yTotal]));
-
+		let scale = this.chartHeight / max(this.data.map(d=>d[this.yValue]));
+		console.log(scale);
 
 		//this loop draws the horizontal elements bars and labels
 		push()
 		translate(gap,0);
 		for(let i=0; i<this.data.length; i++){
 			// draws the bars
-			let row = this.data[i];
+			fill (this.barColour);
+			noStroke();
 			push();
 			for(let j=0; j<this.yValue.length; j++){
-
-				let total = 0;
-				for(let s=0; s<this.yValue.length; s++){
-					total = total+row[this.yValue[s]];
-				}
-				console.log(total)
 				fill (this.barColour[j % this.barColour.length]);
-				noStroke();
-				let scaleValue = this.chartHeight/row[this.yTotal[j]];	
-				rect (0,0,this.barWidth, -row[this.yValue[j]] * scaleValue);
-				translate(0,-row[this.yValue[j]] * scaleValue);
+				ellipse(0,-row[this.yValue[i]]*scale,this.barWidth,this.barWidth);
+
+		
+				
 			}
 			pop();
+
 			// lables
 			fill (this.lableColour)
 			noStroke();
@@ -81,7 +76,7 @@ class StackedBarChart {
 
 		//this draws the vertical elements
 		let tickGap = this.chartHeight/this.numTicks;
-		let tickValue = max(this.data.map(d=>d[this.yTotal]))/this.numTicks;
+		let tickValue = max(this.data.map(d=>d[this.yValue]))/this.numTicks;
 		for(let i=0; i<=this.numTicks; i++){
 			stroke(this.tickColour);
 			line(0,-i*tickGap,-15,-i*tickGap);
