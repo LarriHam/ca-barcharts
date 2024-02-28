@@ -80,7 +80,7 @@ class Stacked100BarChart {
 
 		//this draws the vertical elements
 		let tickGap = this.chartHeight/this.numTicks;
-		let tickValue = max(this.data.map(d=>d[this.yTotal]))/this.numTicks;
+		let tickValue = 100/this.numTicks;
 		for(let i=0; i<=this.numTicks; i++){
 			stroke(this.tickColour);
 			line(0,-i*tickGap,-15,-i*tickGap);

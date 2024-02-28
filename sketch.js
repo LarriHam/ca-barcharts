@@ -113,8 +113,9 @@ let stacked100BarChart = {
 
 let scatterChart = {
 	data:cleanData2,
-	yValue: "VALUE",
-	xValue: "Month",
+	yValue: ["Male", "Female"],
+	xValue: "Age_Group",
+	yTotal: "Total",
 	chartWidth: 400,
 	chartHeight: 300,
 	xPos: 70,

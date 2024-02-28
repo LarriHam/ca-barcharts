@@ -52,7 +52,7 @@ class StackedBarChart {
 				fill (this.barColour[j % this.barColour.length]);
 				noStroke();
 				rect (0,0,this.barWidth,-row[this.yValue[j]]*scale);
-				translate(0,-row[this.yValue[j]] * scale);
+				translate(0,-row[this.yValue[j]] * scale); 
 			}
 			pop();
 			// lables

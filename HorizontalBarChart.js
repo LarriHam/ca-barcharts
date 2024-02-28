@@ -35,8 +35,7 @@ class HorizontalBarChart {
 
 		let gap =(this.chartHeight-(this.data.length * this.barWidth))/(this.data.length +1)
 		let labels = this.data.map(d => d[this.xValue]);
-		let scale = this.chartHeight / max(this.data.map(d=>d[this.yValue]));
-		console.log(scale);
+		let scale = this.chartHeight / max(this.data.map(d=>d[this.yValue])); //height of the chart / the amount of values. puts the data in the height of the chart
 
 		//this loop draws the horizontal elements bars and labels
 		push()
