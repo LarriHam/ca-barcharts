@@ -76,7 +76,7 @@ class HorizontalBarChart {
 			noStroke();
 			textSize(this.lableTextSize);
 			textAlign(CENTER);
-			text(round(tickValue*i),i*tickGap , 30); //PADDING!!!!!!!!!!!!!! NO HARDCODING U SUCK
+			text(round(tickValue*i),i*tickGap , 30); 
 		}
 		
 

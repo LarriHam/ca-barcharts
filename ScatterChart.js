@@ -37,7 +37,6 @@ class ScatterChart {
 		let gap =(this.chartWidth-(this.data.length * this.barWidth))/(this.data.length)
 		let labels = this.data.map(d => d[this.xValue]);
 		let scale = this.chartHeight / max(this.data.map(d=>d[this.yTotal]));
-		console.log(scale);
 
 		//this loop draws the horizontal elements bars and labels
 		push()
@@ -49,7 +48,7 @@ class ScatterChart {
 			let row = this.data[i];
 			push();
 			for(let j=0; j<this.yValue.length; j++){
-				fill (this.barColour);
+				fill (this.barColour[j]);
 				ellipse(0,-row[this.yValue[j]]*scale,this.barWidth,this.barWidth);
 
 			}
