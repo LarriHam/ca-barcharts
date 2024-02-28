@@ -65,7 +65,7 @@ class HorizontalBarChart {
 		pop();	
 
 
-		//this draws the horizontal elements
+		//this draws the vertical elements
 		let tickGap = this.chartWidth/this.numTicks;
 		let tickValue = max(this.data.map(d=>d[this.yValue]))/this.numTicks;
 		for(let i=0; i<=this.numTicks; i++){
