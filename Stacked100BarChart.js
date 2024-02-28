@@ -48,9 +48,12 @@ class Stacked100BarChart {
 			let row = this.data[i];			
 			push();
 			for(let j=0; j<this.yValue.length; j++){
+				//
 				let total = 0;
 				for(let w=0; w<this.yValue.length; w++){
 					total = total+ +row[this.yValue[w]];
+					//+row ensures that its a number
+					//adds the two values to create a total
 				}
 				let scaleValue = this.chartHeight/total;
 				fill (this.barColour[j % this.barColour.length]);
