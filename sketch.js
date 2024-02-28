@@ -129,9 +129,9 @@ let stacked100BarChart = {
 	barColour: ["#6BA368", "#515B3A"]
 }
 
-let scatterChart = {
+let lineChart = {
 	data:cleanData2,
-	yValue: ["Male", "Female"],
+	yValue: "Male",
 	xValue: "Age_Group",
 	yTotal: "Total",
 	chartWidth: 400,
@@ -147,14 +147,15 @@ let scatterChart = {
 	numTicks: 6,
 	tickColour: ("#0f0f0f"),
 	title: "Full Driving Permit 2023",
-	barColour: ["#6BA368", "#9CFC97"]
+	barColour: ["#6BA368", "#9CFC97"],
+	lineWeight: 10
 }
 
 barCharts.push(new BarChart(barChart));
 barCharts.push(new HorizontalBarChart(horizontalBarChart));
 barCharts.push(new StackedBarChart(stackedBarChart));
 barCharts.push(new Stacked100BarChart(stacked100BarChart));
-barCharts.push(new ScatterChart(scatterChart));
+barCharts.push(new LineChart(lineChart));
 
 
 }

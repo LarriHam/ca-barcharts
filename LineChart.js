@@ -1,5 +1,5 @@
 //this defines every object
-class ScatterChart {
+class LineChart {
 	constructor(obj){
 		this.data = obj.data;
 		this.yValue = obj.yValue;
@@ -19,6 +19,7 @@ class ScatterChart {
 		this.tickColour = obj.tickColour;
 		this.title = obj.title;
 		this.barColour = obj.barColour;
+		this.lineWeight = obj.lineWeight;
 	}
 
 	render(){
@@ -39,21 +40,16 @@ class ScatterChart {
 		let scale = this.chartHeight / max(this.data.map(d=>d[this.yTotal]));
 
 		//this loop draws the horizontal elements bars and labels
-		push()
-		translate(gap,0);
+		beginShape();
+		push();
 		for(let i=0; i<this.data.length; i++){
-			// draws the bars
+			// draws the line
 			
 			noStroke();
-			let row = this.data[i];
-			push();
-			for(let j=0; j<this.yValue.length; j++){
-				fill (this.barColour[j]);
-				ellipse(0,-row[this.yValue[j]]*scale,this.barWidth,this.barWidth);
-
-			}
+			push();			
+			vertex((this.barWidth+gap)*i,-this.data[i][this.yValue]*scale);
 			pop();
-
+			
 			// lables
 			fill (this.lableColour)
 			noStroke();
@@ -70,9 +66,13 @@ class ScatterChart {
 			// moves to the next bar
 			translate(gap+this.barWidth,0)
 		}
-		pop();	
-
-
+		pop();
+		noFill();
+		strokeWeight(this.lineWeight);
+		stroke (this.barColour[0]);	
+		endShape();
+		//connects the vertexes
+		strokeWeight(1);
 		//this draws the vertical elements
 		let tickGap = this.chartHeight/this.numTicks;
 		let tickValue = max(this.data.map(d=>d[this.yTotal]))/this.numTicks;
