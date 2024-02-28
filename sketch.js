@@ -14,7 +14,7 @@ function preload(){
 
 function setup(){
 	background(50);
-	createCanvas(1050,1000);
+	createCanvas(1050,1500);
 	angleMode(DEGREES);
 	noLoop();
 
@@ -90,14 +90,35 @@ let stackedBarChart = {
 	barColour: ["#eb4cfc", "#2739d9"]
 }
 
+let stacked100BarChart = {
+	data:cleanData2,
+	yValue: ["Male", "Female"],
+	xValue: "Age_Group",
+	yTotal: "Total",
+	chartWidth: 400,
+	chartHeight: 300,
+	xPos: 570,
+	yPos: 800,
+	axisLineColour: "#0f0f0f",
+	barWidth: 40,
+	lableTextSize:20,
+	lablePadding: 10,
+	lableColour: ("#0f0f0f"),
+	lableRotation:45,
+	numTicks: 6,
+	tickColour: ("#0f0f0f"),
+	title: "Road Fatalities 2023",
+	barColour: ["#eb4cfc", "#2739d9"]
+}
+
 let scatterChart = {
 	data:cleanData2,
 	yValue: "VALUE",
 	xValue: "Month",
 	chartWidth: 400,
 	chartHeight: 300,
-	xPos: 570,
-	yPos: 800,
+	xPos: 70,
+	yPos: 1250,
 	axisLineColour: "#0f0f0f",
 	barWidth: 20,
 	lableTextSize:20,
@@ -113,7 +134,8 @@ let scatterChart = {
 barCharts.push(new BarChart(barChart));
 barCharts.push(new HorizontalBarChart(horizontalBarChart));
 barCharts.push(new StackedBarChart(stackedBarChart));
-// barCharts.push(new ScatterChart(scatterChart));
+barCharts.push(new Stacked100BarChart(stacked100BarChart));
+barCharts.push(new ScatterChart(scatterChart));
 
 
 }

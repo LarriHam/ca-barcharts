@@ -1,5 +1,5 @@
 //this defines every object
-class StackedBarChart {
+class Stacked100BarChart {
 	constructor(obj){
 		this.data = obj.data;
 		this.yValue = obj.yValue;
@@ -37,7 +37,7 @@ class StackedBarChart {
 		let gap =(this.chartWidth-(this.data.length * this.barWidth))/(this.data.length)
 		let labels = this.data.map(d => d[this.xValue]);
 		let scale = this.chartHeight / max(this.data.map(d=>d[this.yTotal]));
-
+	
 
 		//this loop draws the horizontal elements bars and labels
 		push()
@@ -45,14 +45,18 @@ class StackedBarChart {
 
 		for(let i=0; i<this.data.length; i++){
 			// draws the bars			
-			let row = this.data[i];
+			let row = this.data[i];			
 			push();
 			for(let j=0; j<this.yValue.length; j++){
-				
+				let total = 0;
+				for(let w=0; w<this.yValue.length; w++){
+					total = total+ +row[this.yValue[w]];
+				}
+				let scaleValue = this.chartHeight/total;
 				fill (this.barColour[j % this.barColour.length]);
 				noStroke();
-				rect (0,0,this.barWidth,-row[this.yValue[j]]*scale);
-				translate(0,-row[this.yValue[j]] * scale);
+				rect (0,0,this.barWidth,-row[this.yValue[j]]*scaleValue);
+				translate(0,-row[this.yValue[j]] * scaleValue);
 			}
 			pop();
 			// lables

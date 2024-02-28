@@ -45,10 +45,11 @@ class ScatterChart {
 			// draws the bars
 			fill (this.barColour);
 			noStroke();
+			let row = this.data[i];
 			push();
 			for(let j=0; j<this.yValue.length; j++){
 				fill (this.barColour[j % this.barColour.length]);
-				ellipse(0,-row[this.yValue[i]]*scale,this.barWidth,this.barWidth);
+				ellipse(0,-row[this.yValue[j]]*scale,this.barWidth,this.barWidth);
 
 		
 				
